@@ -168,4 +168,8 @@ MIT License — use freely with attribution.
 
 ## Contact
 
-Questions or collaboration inquiries: [your email or LinkedIn]
+**AntibodyML LLC**
+
+Christopher Gaughan, PhD  
+📧 clgaughan@proton.me  
+🔗 LinkedIn
