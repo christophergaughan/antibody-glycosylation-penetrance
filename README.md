@@ -26,7 +26,7 @@ ML tools like RFdiffusion generate antibody sequences without considering post-t
 
 Melo-Braga et al. (2024) claimed both histidine and glutamine at the X-position block glycosylation completely. Our analysis of 19,265 PDB structures shows **Q is not a blocker**:
 
-![X-residue penetrance ranking](figures/x_residue_penetrance.png)
+![X-residue penetrance ranking](x_residue_penetrance_20260127.png)
 
 | X-Residue | Melo-Braga | This Study | Status |
 |-----------|------------|------------|--------|
@@ -40,7 +40,7 @@ Melo-Braga et al. (2024) claimed both histidine and glutamine at the X-position 
 
 To ensure this isn't an artifact of re-analyzing Melo-Braga's data, we compared datasets directly:
 
-![Dataset comparison](figures/melo_braga_vs_validation.png)
+![Dataset comparison](melo_braga_vs_validation_20260127.png)
 
 **Critical:** Both Q glycosylation events occur in our decontaminated dataset (PDBs not in Melo-Braga's study). The penetrance difference (35% vs 5%) reflects opposite ascertainment biases—they sought glycosylated structures, crystallographers avoid them.
 
@@ -50,7 +50,7 @@ To ensure this isn't an artifact of re-analyzing Melo-Braga's data, we compared 
 
 A novel finding not reported by Melo-Braga:
 
-![Chain type analysis](figures/vh_vl_analysis.png)
+![Chain type analysis](vh_vs_vl_analysis_20260127.png)
 
 | Chain | Sequons | Glycosylated | Penetrance | 
 |-------|---------|--------------|------------|
@@ -65,7 +65,7 @@ A novel finding not reported by Melo-Braga:
 
 Framework regions (especially FR1 and FR4) show highest penetrance. Error bars show sensitivity to ascertainment bias correction:
 
-![Regional penetrance](figures/penetrance_by_region.png)
+![Regional penetrance](penetrance_by_region_sensitivity_20260127.png)
 
 **Risk hierarchy:** FR1 > FR4 > FR3 >> CDR1 > CDR3 > CDR2 ≈ FR2
 
