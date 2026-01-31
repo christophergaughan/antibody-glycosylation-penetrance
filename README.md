@@ -4,6 +4,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+📊 **[View Repository Analytics](TRAFFIC_ANALYTICS.md)** - Check how many people have viewed this repository
+
 ---
 
 ## The Problem
