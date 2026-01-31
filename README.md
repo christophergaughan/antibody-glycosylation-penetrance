@@ -149,7 +149,7 @@ If you use this dataset or findings, please cite:
   title = {Independent Validation of N-linked Glycosylation Penetrance in Antibody Variable Domains},
   year = {2025},
   publisher = {GitHub},
-  url = {https://github.com/[username]/antibody-glycosylation-penetrance}
+  url = {https://github.com/christophergaughan/antibody-glycosylation-penetrance}
 }
 ```
 
