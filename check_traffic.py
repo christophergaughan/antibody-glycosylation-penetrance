@@ -14,10 +14,9 @@ Requirements:
     - A GitHub Personal Access Token with 'repo' scope
 """
 
+import argparse
 import os
 import sys
-from datetime import datetime
-import json
 
 try:
     import requests
@@ -167,32 +166,55 @@ class GitHubTrafficChecker:
             print()
             print("Note: GitHub only retains traffic data for 14 days.")
             print("      Run this script regularly to track long-term trends.")
+        else:
+            print("Traffic data could not be retrieved.")
+            print("Check that your token has the 'repo' scope and try again.")
         print()
 
 
 def main():
     """Main entry point."""
+    parser = argparse.ArgumentParser(
+        description="Check GitHub repository traffic statistics.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  export GITHUB_TOKEN="ghp_..."
+  python check_traffic.py
+
+  python check_traffic.py --token ghp_...
+        """,
+    )
+    parser.add_argument(
+        "--token",
+        metavar="GITHUB_TOKEN",
+        help="GitHub Personal Access Token (falls back to GITHUB_TOKEN env var)",
+    )
+    args = parser.parse_args()
+
     # Repository details
     OWNER = "christophergaughan"
     REPO = "antibody-glycosylation-penetrance"
-    
-    # Check for token
-    token = os.environ.get('GITHUB_TOKEN')
+
+    # Resolve token: CLI flag takes precedence over env var
+    token = args.token or os.environ.get('GITHUB_TOKEN')
+
     if not token:
-        print("⚠️  No GITHUB_TOKEN found in environment variables.")
+        print("⚠️  No GITHUB_TOKEN found.")
         print()
-        print("To get full traffic data, you need a GitHub Personal Access Token:")
-        print("1. Go to: https://github.com/settings/tokens")
-        print("2. Click 'Generate new token (classic)'")
-        print("3. Select 'repo' scope")
-        print("4. Generate and copy the token")
-        print("5. Run: export GITHUB_TOKEN='your_token_here'")
+        print("GitHub's Traffic API requires authentication. To get your traffic data:")
+        print("  1. Go to: https://github.com/settings/tokens")
+        print("  2. Click 'Generate new token (classic)'")
+        print("  3. Select the 'repo' scope")
+        print("  4. Generate and copy the token, then re-run:")
         print()
-        response = input("Continue without token? (y/n): ")
-        if response.lower() != 'y':
-            sys.exit(0)
+        print("     export GITHUB_TOKEN='your_token_here'")
+        print("     python check_traffic.py")
         print()
-    
+        print("Alternatively, view traffic in the GitHub web UI:")
+        print(f"  https://github.com/{OWNER}/{REPO}/graphs/traffic")
+        sys.exit(1)
+
     # Create checker and print report
     checker = GitHubTrafficChecker(OWNER, REPO, token)
     checker.print_report()
